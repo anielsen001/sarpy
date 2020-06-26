@@ -1317,7 +1317,7 @@ class XYZPolyType(Serializable, Arrayable):
         if numpy.ndim(X) == 0:
             return numpy.array([X, Y, Z])
         else:
-            return numpy.stack((X, Y, Z), axis=-1)
+            return numpy.hstack((X[...,numpy.newaxis], Y[...,numpy.newaxis], Z[...,numpy.newaxis]))
 
     def get_array(self, dtype=numpy.object):
         """Gets an array representation of the class instance.
